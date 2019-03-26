@@ -24,7 +24,7 @@ func (u *UserRepoImpl) Select() ([]models.User, error) {
 	if err != nil {
 		return users, err
 	}
-
+	defer rows.Close()
 	for rows.Next() {
 		user := models.User{}
 		// SELECT id, name, gender, email FROM public.users;
